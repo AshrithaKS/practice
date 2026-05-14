@@ -1,13 +1,24 @@
 package com.example.com;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-    }
+import org.slf4.Logger;
+import org.slf4.LoggerFactory;
+import org.apache.commons.lang3.StringUtils;
+
+public class App{
+	private static final Logger logger = LoggerFactory.getLogger(App.class);
+	public static void main(String[] args){
+		String name = "CI/CD pipeline";
+
+		if(StringUtils.isNotBlank(name)){
+			String message = greet(name);
+			logger.info(message);
+			System.out.println(message);
+		}else{
+			logger.error("Name is empty");
+		}
+	}
+	public static String greet(String name){
+		return "Hello, "+name+"!Welcome to Maven CI/CD Demo.";
+	}
 }
+
